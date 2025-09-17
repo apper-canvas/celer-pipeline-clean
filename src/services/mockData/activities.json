@@ -1,0 +1,182 @@
+[
+  {
+    "Id": 1,
+    "type": "call",
+    "description": "Discussed enterprise licensing requirements and integration timeline",
+    "contactId": 1,
+    "contactName": "John Anderson",
+    "dealId": 1,
+    "timestamp": "2024-01-20T14:30:00Z",
+    "userId": "user1"
+  },
+  {
+    "Id": 2,
+    "type": "email",
+    "description": "Sent technical specifications and pricing proposal",
+    "contactId": 2,
+    "contactName": "Sarah Chen",
+    "dealId": 2,
+    "timestamp": "2024-01-19T09:15:00Z",
+    "userId": "user1"
+  },
+  {
+    "Id": 3,
+    "type": "meeting",
+    "description": "Product demo and Q&A session with technical team",
+    "contactId": 3,
+    "contactName": "Michael Rodriguez",
+    "dealId": 3,
+    "timestamp": "2024-01-18T16:00:00Z",
+    "userId": "user1"
+  },
+  {
+    "Id": 4,
+    "type": "email",
+    "description": "Follow-up on contract terms and implementation schedule",
+    "contactId": 4,
+    "contactName": "Emily Watson",
+    "dealId": 4,
+    "timestamp": "2024-01-18T11:20:00Z",
+    "userId": "user1"
+  },
+  {
+    "Id": 5,
+    "type": "call",
+    "description": "Compliance requirements review and security discussion",
+    "contactId": 5,
+    "contactName": "David Kim",
+    "dealId": 5,
+    "timestamp": "2024-01-17T15:45:00Z",
+    "userId": "user1"
+  },
+  {
+    "Id": 6,
+    "type": "note",
+    "description": "Researched healthcare compliance requirements for HealthcarePlus",
+    "contactId": 6,
+    "contactName": "Lisa Thompson",
+    "dealId": 6,
+    "timestamp": "2024-01-17T10:30:00Z",
+    "userId": "user1"
+  },
+  {
+    "Id": 7,
+    "type": "meeting",
+    "description": "Initial discovery call to understand manufacturing needs",
+    "contactId": 7,
+    "contactName": "James Wilson",
+    "dealId": 7,
+    "timestamp": "2024-01-16T14:00:00Z",
+    "userId": "user1"
+  },
+  {
+    "Id": 8,
+    "type": "email",
+    "description": "Sent educational pricing and volume discount information",
+    "contactId": 8,
+    "contactName": "Maria Garcia",
+    "dealId": 8,
+    "timestamp": "2024-01-16T09:30:00Z",
+    "userId": "user1"
+  },
+  {
+    "Id": 9,
+    "type": "call",
+    "description": "Weekly check-in on enterprise implementation progress",
+    "contactId": 1,
+    "contactName": "John Anderson",
+    "dealId": 1,
+    "timestamp": "2024-01-15T13:15:00Z",
+    "userId": "user1"
+  },
+  {
+    "Id": 10,
+    "type": "task",
+    "description": "Prepared custom ROI analysis for InnovatePlus implementation",
+    "contactId": 2,
+    "contactName": "Sarah Chen",
+    "dealId": 2,
+    "timestamp": "2024-01-15T08:45:00Z",
+    "userId": "user1"
+  },
+  {
+    "Id": 11,
+    "type": "email",
+    "description": "Sent startup-specific case studies and success stories",
+    "contactId": 3,
+    "contactName": "Michael Rodriguez",
+    "dealId": 3,
+    "timestamp": "2024-01-14T16:20:00Z",
+    "userId": "user1"
+  },
+  {
+    "Id": 12,
+    "type": "meeting",
+    "description": "Contract signing and implementation kickoff meeting",
+    "contactId": 4,
+    "contactName": "Emily Watson",
+    "dealId": 4,
+    "timestamp": "2024-01-14T11:00:00Z",
+    "userId": "user1"
+  },
+  {
+    "Id": 13,
+    "type": "call",
+    "description": "Security architecture review with IT team",
+    "contactId": 5,
+    "contactName": "David Kim",
+    "dealId": 5,
+    "timestamp": "2024-01-13T14:30:00Z",
+    "userId": "user1"
+  },
+  {
+    "Id": 14,
+    "type": "note",
+    "description": "Updated CRM with healthcare compliance checklist",
+    "contactId": 6,
+    "contactName": "Lisa Thompson",
+    "dealId": 6,
+    "timestamp": "2024-01-13T09:15:00Z",
+    "userId": "user1"
+  },
+  {
+    "Id": 15,
+    "type": "email",
+    "description": "Sent manufacturing automation ROI calculator",
+    "contactId": 7,
+    "contactName": "James Wilson",
+    "dealId": 7,
+    "timestamp": "2024-01-12T15:50:00Z",
+    "userId": "user1"
+  },
+  {
+    "Id": 16,
+    "type": "call",
+    "description": "Budget discussion and alternative pricing options",
+    "contactId": 8,
+    "contactName": "Maria Garcia",
+    "dealId": 8,
+    "timestamp": "2024-01-12T10:20:00Z",
+    "userId": "user1"
+  },
+  {
+    "Id": 17,
+    "type": "meeting",
+    "description": "Quarterly business review with key stakeholders",
+    "contactId": 1,
+    "contactName": "John Anderson",
+    "dealId": null,
+    "timestamp": "2024-01-11T14:00:00Z",
+    "userId": "user1"
+  },
+  {
+    "Id": 18,
+    "type": "email",
+    "description": "Shared integration timeline and technical requirements",
+    "contactId": 2,
+    "contactName": "Sarah Chen",
+    "dealId": 2,
+    "timestamp": "2024-01-11T08:30:00Z",
+    "userId": "user1"
+  }
+]

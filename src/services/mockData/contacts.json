@@ -1,0 +1,90 @@
+[
+  {
+    "Id": 1,
+    "name": "John Anderson",
+    "email": "john.anderson@techcorp.com",
+    "phone": "+1 (555) 123-4567",
+    "company": "TechCorp Solutions",
+    "title": "VP of Sales",
+    "tags": ["enterprise", "decision-maker", "high-value"],
+    "createdAt": "2024-01-15T09:00:00Z",
+    "lastContact": "2024-01-20T14:30:00Z"
+  },
+  {
+    "Id": 2,
+    "name": "Sarah Chen",
+    "email": "s.chen@innovateplus.com",
+    "phone": "+1 (555) 234-5678",
+    "company": "InnovatePlus",
+    "title": "CTO",
+    "tags": ["tech-lead", "innovator", "strategic"],
+    "createdAt": "2024-01-10T11:15:00Z",
+    "lastContact": "2024-01-18T16:45:00Z"
+  },
+  {
+    "Id": 3,
+    "name": "Michael Rodriguez",
+    "email": "mrodriguez@startupventures.io",
+    "phone": "+1 (555) 345-6789",
+    "company": "Startup Ventures",
+    "title": "Founder & CEO",
+    "tags": ["startup", "founder", "fast-growing"],
+    "createdAt": "2024-01-08T08:30:00Z",
+    "lastContact": "2024-01-19T10:20:00Z"
+  },
+  {
+    "Id": 4,
+    "name": "Emily Watson",
+    "email": "emily.watson@globalretail.com",
+    "phone": "+1 (555) 456-7890",
+    "company": "Global Retail Corp",
+    "title": "Director of Operations",
+    "tags": ["retail", "operations", "efficiency"],
+    "createdAt": "2024-01-12T13:45:00Z",
+    "lastContact": "2024-01-17T09:15:00Z"
+  },
+  {
+    "Id": 5,
+    "name": "David Kim",
+    "email": "d.kim@financialservices.net",
+    "phone": "+1 (555) 567-8901",
+    "company": "Financial Services Inc",
+    "title": "Head of Technology",
+    "tags": ["fintech", "compliance", "security"],
+    "createdAt": "2024-01-05T15:20:00Z",
+    "lastContact": "2024-01-16T12:30:00Z"
+  },
+  {
+    "Id": 6,
+    "name": "Lisa Thompson",
+    "email": "lisa.thompson@healthcareplus.org",
+    "phone": "+1 (555) 678-9012",
+    "company": "HealthcarePlus",
+    "title": "VP of Digital Innovation",
+    "tags": ["healthcare", "digital-transformation", "compliance"],
+    "createdAt": "2024-01-03T10:10:00Z",
+    "lastContact": "2024-01-15T14:50:00Z"
+  },
+  {
+    "Id": 7,
+    "name": "James Wilson",
+    "email": "jwilson@manufacturingcorp.com",
+    "phone": "+1 (555) 789-0123",
+    "company": "Manufacturing Corp",
+    "title": "Plant Manager",
+    "tags": ["manufacturing", "efficiency", "automation"],
+    "createdAt": "2024-01-01T12:00:00Z",
+    "lastContact": "2024-01-14T11:40:00Z"
+  },
+  {
+    "Id": 8,
+    "name": "Maria Garcia",
+    "email": "maria.garcia@edutech.edu",
+    "phone": "+1 (555) 890-1234",
+    "company": "EduTech Institute",
+    "title": "Director of IT",
+    "tags": ["education", "technology", "budget-conscious"],
+    "createdAt": "2023-12-28T14:30:00Z",
+    "lastContact": "2024-01-13T15:20:00Z"
+  }
+]

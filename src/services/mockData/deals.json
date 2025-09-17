@@ -1,0 +1,122 @@
+[
+  {
+    "Id": 1,
+    "title": "TechCorp Enterprise License",
+    "contactId": 1,
+    "contactName": "John Anderson",
+    "stage": "Proposal",
+    "amount": 125000,
+    "probability": 75,
+    "expectedCloseDate": "2024-02-15T00:00:00Z",
+    "createdAt": "2024-01-10T09:00:00Z",
+    "notes": "Multi-year enterprise license with custom integrations. John is very interested and has internal buy-in."
+  },
+  {
+    "Id": 2,
+    "title": "InnovatePlus Technical Implementation",
+    "contactId": 2,
+    "contactName": "Sarah Chen",
+    "stage": "Qualified",
+    "amount": 85000,
+    "probability": 60,
+    "expectedCloseDate": "2024-03-01T00:00:00Z",
+    "createdAt": "2024-01-08T11:15:00Z",
+    "notes": "Sarah needs technical specs and integration timeline. Scheduled demo for next week."
+  },
+  {
+    "Id": 3,
+    "title": "Startup Growth Package",
+    "contactId": 3,
+    "contactName": "Michael Rodriguez",
+    "stage": "Lead",
+    "amount": 25000,
+    "probability": 30,
+    "expectedCloseDate": "2024-02-28T00:00:00Z",
+    "createdAt": "2024-01-15T08:30:00Z",
+    "notes": "Early stage startup with rapid growth potential. Budget constraints but strong interest."
+  },
+  {
+    "Id": 4,
+    "title": "Global Retail Operations Suite",
+    "contactId": 4,
+    "contactName": "Emily Watson",
+    "stage": "Closed Won",
+    "amount": 200000,
+    "probability": 100,
+    "expectedCloseDate": "2024-01-30T00:00:00Z",
+    "createdAt": "2023-12-20T13:45:00Z",
+    "notes": "Large implementation across multiple retail locations. Excellent reference opportunity."
+  },
+  {
+    "Id": 5,
+    "title": "Financial Services Compliance Module",
+    "contactId": 5,
+    "contactName": "David Kim",
+    "stage": "Proposal",
+    "amount": 150000,
+    "probability": 80,
+    "expectedCloseDate": "2024-02-20T00:00:00Z",
+    "createdAt": "2024-01-05T15:20:00Z",
+    "notes": "High priority compliance requirements. David has strong influence on purchasing decisions."
+  },
+  {
+    "Id": 6,
+    "title": "HealthcarePlus Digital Platform",
+    "contactId": 6,
+    "contactName": "Lisa Thompson",
+    "stage": "Qualified",
+    "amount": 95000,
+    "probability": 65,
+    "expectedCloseDate": "2024-03-15T00:00:00Z",
+    "createdAt": "2024-01-03T10:10:00Z",
+    "notes": "Healthcare compliance is critical. Need to schedule meeting with their compliance team."
+  },
+  {
+    "Id": 7,
+    "title": "Manufacturing Automation Tools",
+    "contactId": 7,
+    "contactName": "James Wilson",
+    "stage": "Lead",
+    "amount": 45000,
+    "probability": 40,
+    "expectedCloseDate": "2024-04-01T00:00:00Z",
+    "createdAt": "2024-01-01T12:00:00Z",
+    "notes": "Interested in automation capabilities. Need to demonstrate ROI and efficiency gains."
+  },
+  {
+    "Id": 8,
+    "title": "EduTech Student Management System",
+    "contactId": 8,
+    "contactName": "Maria Garcia",
+    "stage": "Closed Lost",
+    "amount": 35000,
+    "probability": 0,
+    "expectedCloseDate": "2024-01-31T00:00:00Z",
+    "createdAt": "2023-12-28T14:30:00Z",
+    "notes": "Budget constraints led to decision to build in-house solution. Good relationship maintained for future opportunities."
+  },
+  {
+    "Id": 9,
+    "title": "TechCorp Mobile Extension",
+    "contactId": 1,
+    "contactName": "John Anderson",
+    "stage": "Lead",
+    "amount": 75000,
+    "probability": 50,
+    "expectedCloseDate": "2024-05-01T00:00:00Z",
+    "createdAt": "2024-01-18T10:30:00Z",
+    "notes": "Follow-up opportunity from main enterprise deal. Mobile-first requirements."
+  },
+  {
+    "Id": 10,
+    "title": "Startup Analytics Dashboard",
+    "contactId": 3,
+    "contactName": "Michael Rodriguez",
+    "stage": "Qualified",
+    "amount": 15000,
+    "probability": 70,
+    "expectedCloseDate": "2024-02-10T00:00:00Z",
+    "createdAt": "2024-01-20T09:15:00Z",
+    "notes": "Quick win opportunity. Michael needs real-time analytics for investor reporting."
+  }
+]

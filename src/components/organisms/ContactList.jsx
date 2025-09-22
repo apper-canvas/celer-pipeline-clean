@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
 import ApperIcon from "@/components/ApperIcon";
+import Input from "@/components/atoms/Input";
 import SearchBar from "@/components/molecules/SearchBar";
 import { formatDate, formatRelativeDate } from "@/utils/formatters";
 import { cn } from "@/utils/cn";
 
-const ContactList = ({ contacts, onEdit, onDelete, onAdd, loading }) => {
+const ContactList = ({ contacts, onEdit, onDelete, onAdd, loading, selectedContacts = [], onSelectionChange }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("name");
   
@@ -23,8 +24,59 @@ const ContactList = ({ contacts, onEdit, onDelete, onAdd, loading }) => {
       return 0;
     });
 
+useEffect(() => {
+    if (!onSelectionChange) return;
+    
+    // Clear selection if no contacts match current selection
+    const validSelectedContacts = selectedContacts.filter(id => 
+      contacts.some(contact => contact.Id === id)
+    );
+    
+    if (validSelectedContacts.length !== selectedContacts.length) {
+      onSelectionChange(validSelectedContacts);
+    }
+  }, [contacts, selectedContacts, onSelectionChange]);
+
+  const handleSelectAll = (checked) => {
+    if (!onSelectionChange) return;
+    
+    if (checked) {
+      const allIds = filteredContacts.map(contact => contact.Id);
+      onSelectionChange(allIds);
+    } else {
+      onSelectionChange([]);
+    }
+  };
+
+  const handleSelectContact = (contactId, checked) => {
+    if (!onSelectionChange) return;
+    
+    if (checked) {
+      onSelectionChange([...selectedContacts, contactId]);
+    } else {
+      onSelectionChange(selectedContacts.filter(id => id !== contactId));
+    }
+  };
+
+  const isAllSelected = filteredContacts.length > 0 && 
+    filteredContacts.every(contact => selectedContacts.includes(contact.Id));
+  
+  const isPartiallySelected = selectedContacts.length > 0 && 
+    !isAllSelected && 
+    filteredContacts.some(contact => selectedContacts.includes(contact.Id));
+
   const ContactRow = ({ contact }) => (
     <tr className="hover:bg-gray-50 transition-colors">
+{onSelectionChange && (
+        <td className="px-4 py-4 whitespace-nowrap">
+          <input
+            type="checkbox"
+            checked={selectedContacts.includes(contact.Id)}
+            onChange={(e) => handleSelectContact(contact.Id, e.target.checked)}
+            className="w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary focus:ring-2"
+          />
+        </td>
+      )}
       <td className="px-6 py-4 whitespace-nowrap">
         <div className="flex items-center">
           <div className="h-10 w-10 bg-gradient-to-r from-primary to-blue-600 rounded-full flex items-center justify-center">
@@ -82,7 +134,7 @@ const ContactList = ({ contacts, onEdit, onDelete, onAdd, loading }) => {
   return (
     <div className="bg-white rounded-lg shadow-md">
       <div className="p-6 border-b border-gray-200">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
+<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0 mb-6">
           <div className="flex-1 max-w-md">
             <SearchBar 
               placeholder="Search contacts..."
@@ -110,10 +162,23 @@ const ContactList = ({ contacts, onEdit, onDelete, onAdd, loading }) => {
         </div>
       </div>
 
-      <div className="overflow-x-auto">
+<div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
+              {onSelectionChange && (
+                <th className="px-4 py-3 text-left">
+                  <input
+                    type="checkbox"
+                    checked={isAllSelected}
+                    ref={input => {
+                      if (input) input.indeterminate = isPartiallySelected;
+                    }}
+                    onChange={(e) => handleSelectAll(e.target.checked)}
+                    className="w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary focus:ring-2"
+                  />
+                </th>
+              )}
               <th className="px-6 py-3 text-left text-xs font-medium text-secondary uppercase tracking-wider">
                 Contact
               </th>
@@ -135,7 +200,7 @@ const ContactList = ({ contacts, onEdit, onDelete, onAdd, loading }) => {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {filteredContacts.map(contact => (
+{filteredContacts.map(contact => (
               <ContactRow key={contact.Id} contact={contact} />
             ))}
           </tbody>

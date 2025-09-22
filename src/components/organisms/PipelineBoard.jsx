@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DealCard from "@/components/molecules/DealCard";
 import Button from "@/components/atoms/Button";
 import ApperIcon from "@/components/ApperIcon";
 import { formatCurrency } from "@/utils/formatters";
 import { cn } from "@/utils/cn";
 
-const PipelineBoard = ({ deals, onDealMove, onDealEdit, onDealDelete, onDealAdd }) => {
+const PipelineBoard = ({ deals, onDealMove, onDealEdit, onDealDelete, onDealAdd, selectedDeals = [], onSelectionChange }) => {
   const [draggedDeal, setDraggedDeal] = useState(null);
   const [dragOverStage, setDragOverStage] = useState(null);
 
@@ -16,6 +16,29 @@ const PipelineBoard = ({ deals, onDealMove, onDealEdit, onDealDelete, onDealAdd 
     { id: "Closed Won", name: "Closed Won", color: "border-success" },
     { id: "Closed Lost", name: "Closed Lost", color: "border-error" }
   ];
+
+useEffect(() => {
+    if (!onSelectionChange) return;
+    
+    // Clear selection if no deals match current selection
+    const validSelectedDeals = selectedDeals.filter(id => 
+      deals.some(deal => deal.Id === id)
+    );
+    
+    if (validSelectedDeals.length !== selectedDeals.length) {
+      onSelectionChange(validSelectedDeals);
+    }
+  }, [deals, selectedDeals, onSelectionChange]);
+
+  const handleSelectDeal = (dealId, checked) => {
+    if (!onSelectionChange) return;
+    
+    if (checked) {
+      onSelectionChange([...selectedDeals, dealId]);
+    } else {
+      onSelectionChange(selectedDeals.filter(id => id !== dealId));
+    }
+  };
 
   const getDealsForStage = (stage) => {
     return deals.filter(deal => deal.stage === stage);
@@ -78,8 +101,8 @@ const PipelineBoard = ({ deals, onDealMove, onDealEdit, onDealDelete, onDealAdd 
             onDragEnter={(e) => handleDragEnter(e, stage.id)}
             onDragLeave={handleDragLeave}
             onDrop={(e) => handleDrop(e, stage.id)}
-          >
-            <div className="p-4 border-b border-gray-200 bg-white rounded-t-lg">
+>
+<div className="p-4 border-b border-gray-200 bg-white rounded-t-lg">
               <div className="flex items-center justify-between mb-2">
                 <h3 className="font-semibold text-gray-900 flex items-center">
                   <div className={cn("w-3 h-3 rounded-full mr-2", 
@@ -109,7 +132,7 @@ const PipelineBoard = ({ deals, onDealMove, onDealEdit, onDealDelete, onDealAdd 
 
             <div className="p-4 space-y-3 max-h-96 overflow-y-auto">
               {stageDeals.map(deal => (
-                <DealCard
+<DealCard
                   key={deal.Id}
                   deal={deal}
                   onEdit={onDealEdit}
@@ -118,6 +141,8 @@ const PipelineBoard = ({ deals, onDealMove, onDealEdit, onDealDelete, onDealAdd 
                   draggable
                   onDragStart={(e) => handleDragStart(e, deal)}
                   onDragEnd={handleDragEnd}
+                  isSelected={selectedDeals.includes(deal.Id)}
+                  onSelect={onSelectionChange ? handleSelectDeal : undefined}
                 />
               ))}
               

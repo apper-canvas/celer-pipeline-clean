@@ -1,3 +1,5 @@
+import React from "react";
+import Error from "@/components/ui/Error";
 import contactsData from "@/services/mockData/contacts.json";
 
 class ContactService {
@@ -66,5 +68,44 @@ class ContactService {
     return true;
   }
 }
+// Bulk operations
+  async bulkUpdateTags(ids, tags) {
+    await this.delay();
+    
+    ids.forEach(id => {
+      const contactIndex = this.contacts.findIndex(c => c.Id === id);
+      if (contactIndex !== -1) {
+        this.contacts[contactIndex] = {
+          ...this.contacts[contactIndex],
+          tags: [...new Set([...(this.contacts[contactIndex].tags || []), ...tags])]
+        };
+      }
+    });
+    
+    return { success: true, count: ids.length };
+  }
 
+  async bulkUpdateStatus(ids, status) {
+    await this.delay();
+    
+    ids.forEach(id => {
+      const contactIndex = this.contacts.findIndex(c => c.Id === id);
+      if (contactIndex !== -1) {
+        this.contacts[contactIndex] = {
+          ...this.contacts[contactIndex],
+          status
+        };
+      }
+    });
+    
+    return { success: true, count: ids.length };
+  }
+
+  async bulkDelete(ids) {
+    await this.delay();
+    
+    this.contacts = this.contacts.filter(c => !ids.includes(c.Id));
+    
+    return { success: true, count: ids.length };
+  }
 export const contactService = new ContactService();

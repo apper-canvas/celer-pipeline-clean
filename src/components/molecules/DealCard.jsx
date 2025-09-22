@@ -1,15 +1,17 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import ApperIcon from "@/components/ApperIcon";
 import Card from "@/components/atoms/Card";
 import Badge from "@/components/atoms/Badge";
-import ApperIcon from "@/components/ApperIcon";
-import { formatCurrency, formatDate, getProbabilityColor, getStageColor } from "@/utils/formatters";
 import { cn } from "@/utils/cn";
+import { formatCurrency, formatDate, getProbabilityColor, getStageColor } from "@/utils/formatters";
 
 const DealCard = ({ 
   deal, 
   onEdit, 
   onDelete, 
   isDragging = false,
+  isSelected = false,
+  onSelect,
   className,
   ...props 
 }) => {
@@ -20,23 +22,42 @@ const DealCard = ({
     setIsMenuOpen(false);
     onEdit?.(deal);
   };
-  
+
   const handleDelete = (e) => {
     e.stopPropagation();
     setIsMenuOpen(false);
     onDelete?.(deal);
   };
 
+  const handleSelectChange = (e) => {
+    e.stopPropagation();
+    if (onSelect) {
+      onSelect(deal.id, e.target.checked);
+    }
+  };
+
   return (
-    <Card 
+<Card 
       className={cn(
-        "p-4 cursor-move select-none border-l-4 transition-all duration-200",
+        "p-4 cursor-move select-none border-l-4 transition-all duration-200 relative",
         getStageColor(deal.stage),
-        isDragging && "dragging",
+        isDragging && "dragging opacity-50 transform rotate-2 scale-105",
+        isSelected && "ring-2 ring-primary bg-primary/5",
         className
       )}
       {...props}
     >
+      {onSelect && (
+        <div className="absolute top-2 left-2">
+          <input
+            type="checkbox"
+            checked={isSelected}
+            onChange={handleSelectChange}
+            onClick={(e) => e.stopPropagation()}
+            className="w-4 h-4 text-primary bg-white border-2 border-gray-300 rounded focus:ring-primary focus:ring-2"
+          />
+        </div>
+      )}
       <div className="flex items-start justify-between mb-3">
         <div className="flex-1 min-w-0">
           <h3 className="text-sm font-semibold text-gray-900 truncate">

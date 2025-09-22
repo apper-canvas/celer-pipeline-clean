@@ -87,6 +87,63 @@ class DealService {
     this.deals.splice(index, 1);
     return true;
   }
+// Bulk operations
+  async bulkUpdateStage(ids, stage) {
+    await this.delay();
+    
+    ids.forEach(id => {
+      const dealIndex = this.deals.findIndex(d => d.Id === id);
+      if (dealIndex !== -1) {
+        this.deals[dealIndex] = {
+          ...this.deals[dealIndex],
+          stage
+        };
+      }
+    });
+    
+    return { success: true, count: ids.length };
+  }
+
+  async bulkUpdateTags(ids, tags) {
+    await this.delay();
+    
+    ids.forEach(id => {
+      const dealIndex = this.deals.findIndex(d => d.Id === id);
+      if (dealIndex !== -1) {
+        this.deals[dealIndex] = {
+          ...this.deals[dealIndex],
+          tags: [...new Set([...(this.deals[dealIndex].tags || []), ...tags])]
+        };
+      }
+    });
+    
+    return { success: true, count: ids.length };
+  }
+
+  async bulkClose(ids, status) {
+    await this.delay();
+    
+    ids.forEach(id => {
+      const dealIndex = this.deals.findIndex(d => d.Id === id);
+      if (dealIndex !== -1) {
+        this.deals[dealIndex] = {
+          ...this.deals[dealIndex],
+          stage: status,
+          closedDate: new Date().toISOString()
+        };
+      }
+    });
+    
+    return { success: true, count: ids.length };
+  }
+
+  async bulkDelete(ids) {
+    await this.delay();
+    
+    this.deals = this.deals.filter(d => !ids.includes(d.Id));
+    
+    return { success: true, count: ids.length };
+  }
 }
 
 export const dealService = new DealService();

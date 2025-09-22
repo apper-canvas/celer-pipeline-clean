@@ -1,18 +1,20 @@
 import { useState, useEffect } from "react";
 import ContactList from "@/components/organisms/ContactList";
 import ContactModal from "@/components/organisms/ContactModal";
+import BulkActionToolbar from "@/components/organisms/BulkActionToolbar";
 import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
 import Empty from "@/components/ui/Empty";
 import { contactService } from "@/services/api/contactService";
+import { toast } from "react-toastify";
 
 const Contacts = () => {
-  const [contacts, setContacts] = useState([]);
+const [contacts, setContacts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [selectedContact, setSelectedContact] = useState(null);
-
+  const [selectedContacts, setSelectedContacts] = useState([]);
   const loadContacts = async () => {
     try {
       setLoading(true);
@@ -55,7 +57,7 @@ const Contacts = () => {
     }
   };
 
-  const handleDelete = async (contactId) => {
+const handleDelete = async (contactId) => {
     try {
       await contactService.delete(contactId);
       setContacts(prev => prev.filter(c => c.Id !== contactId));
@@ -63,6 +65,53 @@ const Contacts = () => {
       throw error;
     }
   };
+
+  const handleSelectionChange = (selectedIds) => {
+    setSelectedContacts(selectedIds);
+  };
+
+  const handleClearSelection = () => {
+    setSelectedContacts([]);
+  };
+
+  const bulkActions = [
+    {
+      label: "Add Tags",
+      icon: "Tag",
+      handler: async (selectedIds) => {
+        const tags = prompt("Enter tags (comma separated):");
+        if (tags) {
+          await contactService.bulkUpdateTags(selectedIds, tags.split(',').map(t => t.trim()));
+          await loadContacts();
+          toast.success(`Updated tags for ${selectedIds.length} contacts`);
+        }
+      }
+    },
+    {
+      label: "Update Status",
+      icon: "User",
+      handler: async (selectedIds) => {
+        const status = prompt("Enter new status:");
+        if (status) {
+          await contactService.bulkUpdateStatus(selectedIds, status);
+          await loadContacts();
+          toast.success(`Updated status for ${selectedIds.length} contacts`);
+        }
+      }
+    },
+    {
+      label: "Delete",
+      icon: "Trash2",
+      variant: "destructive",
+      handler: async (selectedIds) => {
+        if (confirm(`Delete ${selectedIds.length} contacts? This cannot be undone.`)) {
+          await contactService.bulkDelete(selectedIds);
+          await loadContacts();
+          toast.success(`Deleted ${selectedIds.length} contacts`);
+        }
+      }
+    }
+  ];
 
   if (loading) return <Loading rows={5} />;
   if (error) return <Error message={error} onRetry={loadContacts} />;
@@ -77,8 +126,7 @@ const Contacts = () => {
       />
     );
   }
-
-  return (
+return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
@@ -87,12 +135,20 @@ const Contacts = () => {
         </div>
       </div>
 
+<BulkActionToolbar
+        selectedItems={selectedContacts}
+        onClearSelection={handleClearSelection}
+        actions={bulkActions}
+      />
+      
       <ContactList
         contacts={contacts}
         onEdit={handleEdit}
         onDelete={handleDelete}
         onAdd={handleAdd}
         loading={loading}
+        selectedContacts={selectedContacts}
+        onSelectionChange={handleSelectionChange}
       />
 
       <ContactModal

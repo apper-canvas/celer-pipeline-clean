@@ -1,5 +1,3 @@
-import React from "react";
-import Error from "@/components/ui/Error";
 import contactsData from "@/services/mockData/contacts.json";
 
 class ContactService {
@@ -67,8 +65,8 @@ class ContactService {
     this.contacts.splice(index, 1);
     return true;
   }
-}
-// Bulk operations
+
+  // Bulk operations
   async bulkUpdateTags(ids, tags) {
     await this.delay();
     
@@ -108,4 +106,6 @@ class ContactService {
     
     return { success: true, count: ids.length };
   }
+}
+
 export const contactService = new ContactService();
